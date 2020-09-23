@@ -27,3 +27,30 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        errorThresholdPercentage: 50
+        requestVolumeThreshold: 10
+        sleepWindowInMilliseconds: 20000
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 20000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  rabbitmq:
+    addresses: 49.234.95.144:5672
+    connection-timeout: 10000
+    password: guest
+    publisher-confirm-type: simple
+    publisher-returns: true
+    template:
+      mandatory: true
+    username: guest
+    virtual-host: /
